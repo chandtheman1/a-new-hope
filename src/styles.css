@@ -1,4 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+* {
+  color: #fff;
+}
+
+body {
+  /* Force the body to fill the entire screen */
+  width: 100%;
+  height: 100%;
+  /* Hide elements that flow outside the viewable space */
+  overflow: hidden;
+  /* Black background for the screen */
+  background: #000;
+}
