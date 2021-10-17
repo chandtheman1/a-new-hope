@@ -1,9 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 
-* {
-  color: #fff;
-}
-
 body {
   /* Force the body to fill the entire screen */
   width: 100%;
@@ -12,4 +8,5 @@ body {
   overflow: hidden;
   /* Black background for the screen */
   background: #000;
+  color: #fff;
 }
