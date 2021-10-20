@@ -12,7 +12,7 @@ export class CharacterListService {
   constructor(private http:HttpClient) { }
 
   getMovie(): Observable<any>{
-    return this.http.get<any>(this.movieApiUrl);
+    return this.http.get<any>(this.movieApiUrl)
   }
 
   getCharacter(url: any): Observable<any>{

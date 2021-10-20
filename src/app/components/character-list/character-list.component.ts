@@ -10,42 +10,26 @@ import { CharacterListService } from 'src/app/services/character-list.service';
 export class CharacterListComponent implements OnInit {
 
   charactersApi: any = [];
-  characters: any = ['hello'];
-  // url: any = ['https://swapi.dev/api/people/1', 'https://swapi.dev/api/people/2']
-  url: any = 'https://swapi.dev/api/people/1'
+  characters: any = [];
   constructor(private characterListService: CharacterListService) { }
 
   ngOnInit(): void {
-    // this.getCharacterApi()
-    // this.getCharacters(this.url)
-    this.getCharacters(this.url);
+    this.characterListService.getMovie().subscribe((data) => {
+      this.charactersApi = data.characters;
+      
+      this.charactersApi.map((item: any) => { 
+        // console.log(item);
+        this.characterListService.getCharacter(item).subscribe((data) => { 
+          console.log(data);
+          this.characters.push(data);
+        })
+      });
+
+    })
 
   }
 
-  getCharacterApi() {
-    this.characterListService.getMovie().subscribe((characters) => {
-      this.charactersApi = characters.characters;
-    });
-  }
-
-  // getCharacters(array: any) {
-  //   array.map( (item: any) => {
-  //     const characterDetail = this.characterListService.getCharacter(item)
-  //     this.characters.push(characterDetail)
-  //   })
-  // }
-
-  // getCharacters(array: any) {
-
-  //   array.map((item: any) => {
-  //     this.characterListService.getCharacter(item).subscribe((character) => {
-  //       this.characters = character
-  //     })
-  //   })
-    
-  // }
   
-  getCharacters(url: any) {
-    this.characters = this.characterListService.getCharacter(url).subscribe((character) => character.name)
-  }
+
+  
 }
