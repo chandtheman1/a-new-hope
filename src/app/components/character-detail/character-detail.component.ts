@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CharacterListService } from 'src/app/services/character-list.service';
 
 @Component({
   selector: 'app-character-detail',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CharacterDetailComponent implements OnInit {
 
-  constructor() { }
+  character: any = undefined;
+
+  constructor(private characterListService: CharacterListService) { }
 
   ngOnInit(): void {
+    // Gets ID from URL
+    const urlArray = window.location.href.split('/')
+    const id = urlArray[urlArray.length - 1];
+    const apiURL = `https://swapi.dev/api/people/${id}`
+
+    this.characterListService.getCharacter(apiURL).subscribe((data) => {
+      // console.log(data);
+      this.character = data;
+      // console.log(this.character);
+    });
+
   }
 
 }
