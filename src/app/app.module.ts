@@ -10,10 +10,12 @@ import { HeaderComponent } from './components/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MainComponent } from './components/main/main.component';
 import { CharacterListComponent } from './components/character-list/character-list.component';
+import { CharacterDetailComponent } from './components/character-detail/character-detail.component';
 
 const appRoutes: Routes = [
   {path: '', component: MainComponent},
-  {path: 'character-list', component: CharacterListComponent}
+  {path: 'character-list', component: CharacterListComponent},
+  {path: 'character/:characterid', component: CharacterDetailComponent}
 ]
 
 @NgModule({
@@ -21,14 +23,15 @@ const appRoutes: Routes = [
     AppComponent,
     HeaderComponent,
     MainComponent,
-    CharacterListComponent
+    CharacterListComponent,
+    CharacterDetailComponent
   ],
   imports: [
     BrowserModule,
     FontAwesomeModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(appRoutes, { enableTracing: true}),
+    RouterModule.forRoot(appRoutes, { enableTracing: false}),
     MatTabsModule,
   ],
   providers: [],

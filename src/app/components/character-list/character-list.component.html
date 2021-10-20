@@ -1,6 +1,6 @@
 <!-- <p *ngFor="let character of characters">{{character}}</p> -->
 <div class="container">
     <div class="card" *ngFor="let character of characters">
-        <a href="#"><h3>{{character.name}}</h3></a>
+        <a (click)="onSelect(character.id)"><h3>{{character.name}}</h3></a>
     </div>    
 </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 import { CharacterListService } from 'src/app/services/character-list.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class CharacterListComponent implements OnInit {
 
   charactersApi: any = [];
   characters: any = [];
-  constructor(private characterListService: CharacterListService) { }
+  constructor(private characterListService: CharacterListService, private router: Router) { }
 
   ngOnInit(): void {
     this.characterListService.getMovie().subscribe((data) => {
@@ -19,9 +20,14 @@ export class CharacterListComponent implements OnInit {
       
       this.charactersApi.map((item: any) => { 
         // console.log(item);
+        // Pulls the number from "https://swapi.dev/api/people/1/" and assigns it to data object
+        const characterId = { id: item.split('/')[5]}
+        // console.log(characterId);
         this.characterListService.getCharacter(item).subscribe((data) => { 
-          console.log(data);
-          this.characters.push(data);
+          // console.log(data);
+          // console.log(Object.assign(characterId, data))
+          const newData = Object.assign(characterId, data)
+          this.characters.push(newData);
         })
       });
 
@@ -29,7 +35,9 @@ export class CharacterListComponent implements OnInit {
 
   }
 
-  
+  onSelect(characterId: any) {
+    this.router.navigate(['/character', characterId])
+  }
 
   
 }
