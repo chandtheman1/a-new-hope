@@ -19,9 +19,7 @@ export class CharacterDetailComponent implements OnInit {
     const apiURL = `https://swapi.dev/api/people/${id}`
 
     this.characterListService.getCharacter(apiURL).subscribe((data) => {
-      // console.log(data);
       this.character = data;
-      // console.log(this.character);
     });
 
   }

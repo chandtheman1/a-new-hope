@@ -12,6 +12,7 @@ import { MainComponent } from './components/main/main.component';
 import { CharacterListComponent } from './components/character-list/character-list.component';
 import { CharacterDetailComponent } from './components/character-detail/character-detail.component';
 
+// Routing
 const appRoutes: Routes = [
   {path: '', component: MainComponent},
   {path: 'character-list', component: CharacterListComponent},
@@ -31,7 +32,7 @@ const appRoutes: Routes = [
     FontAwesomeModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(appRoutes, { enableTracing: false}),
+    RouterModule.forRoot(appRoutes, { enableTracing: true}),
     MatTabsModule,
   ],
   providers: [],

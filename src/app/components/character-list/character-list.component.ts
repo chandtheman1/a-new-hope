@@ -15,18 +15,14 @@ export class CharacterListComponent implements OnInit {
   constructor(private characterListService: CharacterListService, private router: Router) { }
 
   ngOnInit(): void {
-    this.characterListService.getMovie().subscribe((data) => {
+    this.characterListService.getMovie().subscribe((data) => {                      // API Observable returns Movie details of A New Hope including an array of characters APIs
       this.charactersApi = data.characters;
       
       this.charactersApi.map((item: any) => { 
-        // console.log(item);
-        // Pulls the number from "https://swapi.dev/api/people/1/" and assigns it to data object
-        const characterId = { id: item.split('/')[5]}
-        // console.log(characterId);
-        this.characterListService.getCharacter(item).subscribe((data) => { 
-          // console.log(data);
-          // console.log(Object.assign(characterId, data))
-          const newData = Object.assign(characterId, data)
+        const characterId = { id: item.split('/')[5]}                               // Pulls the number "1" from "https://swapi.dev/api/people/1/" and assigns it to data object
+
+        this.characterListService.getCharacter(item).subscribe((data) => {          // Second API Observable returns character details from the array of characters APIs
+          const newData = Object.assign(characterId, data)                          // Assigns the ID to the character according to the api link
           this.characters.push(newData);
         })
       });
@@ -34,7 +30,7 @@ export class CharacterListComponent implements OnInit {
     })
 
   }
-
+  // button for on click routing
   onSelect(characterId: any) {
     this.router.navigate(['/character', characterId])
   }
