@@ -41,7 +41,7 @@ h3 {
   height: 100%;
   width: 50%;
   background: url("./door.jpg") white;
-  background-position: 100px;
+  background-position: -400px;
   background-repeat: no-repeat;
   transition: 1s;
 }
@@ -53,7 +53,7 @@ h3 {
   width: 50%;
   right: 0;
   background: url("./door.jpg") white;
-  background-position: -200px;
+  background-position: -700px;
   background-repeat: no-repeat;
   transition: 1s;
 }
